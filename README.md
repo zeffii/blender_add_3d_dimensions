@@ -9,7 +9,7 @@ blender development thread for the file: https://developer.blender.org/T37151#30
 
 The code is offered as GPL, this permits me to copy and modify the code as long as I also keep it GPL license. My intention is to pep8 the code and experiment a bit more with package structuring in python - the original code as of may 2015 is one massive file (3k+ lines), i'd like to see it modularized. 
 
-A while back (4 years ago from this time of writing) I also wrote a [lightweight calliper script](https://github.com/zeffii/GL-calliper) but it never progressed very far, especially not in the final finesse stage of the leading lines and arrows and 3d text.
+A while back (4 years ago from the time of this writing) I also wrote a [lightweight calliper script](https://github.com/zeffii/GL-calliper) but it never progressed very far, especially not in the final finesse stage of the leading lines and arrows and 3d text.
 
 ### Plan!
 
