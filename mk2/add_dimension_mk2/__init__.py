@@ -33,7 +33,7 @@ import bpy
 
 from bpy.app.handlers import persistent
 
-from .operator_dimensions import Dimension
+from .operator_dimension import Dimension
 from .object_properties import DimensionVariables
 from .ui_panel_dimension_add import DimensionAdd
 from .ui_panel_dimension import DimensionPanel

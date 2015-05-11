@@ -8,6 +8,10 @@ from bpy.props import (
     IntProperty
 )
 
+def StartLocationUpdate(self, context):
+    ''' location update '''
+    bpy.context.scene.cursor_location = self.Dimension_startlocation
+
 
 # Add properties to objects
 def DimensionVariables():
