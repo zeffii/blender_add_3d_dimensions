@@ -2,7 +2,7 @@
 A script to generate a dimension between selected vertices
 
 The original script is by [cwolf3d (Spivak Vladimir)](http://cwolf3d.korostyshev.net/)  
-wiki: http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Curve/Dimension
+wiki: http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Curve/Dimension  
 blender development thread for the file: https://developer.blender.org/T37151#307879  
 
 ### Why did I make a repository.
