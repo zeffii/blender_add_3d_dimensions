@@ -17,13 +17,13 @@
 # ##### END GPL LICENSE BLOCK #####
 
 bl_info = {
-    'name': 'Dimension',
-    'author': 'Spivak Vladimir (http://cwolf3d.korostyshev.net)',
+    'name': 'Dimension MK2',
+    'author': 'Spivak Vladimir (http://cwolf3d.korostyshev.net), Zeffii Stanton (@zeffii)',
     'version': (3, 9, 3),
     'blender': (2, 7, 4),
     'location': 'View3D > Add > Curve',
     'description': 'Adds Dimension',
-    'warning': '',  # used for warning icon and text in addons panel
+    'warning': '',
     'wiki_url': 'http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Curve/Dimension',
     'tracker_url': 'http://developer.blender.org/T37151',
     'category': 'Add Curve'}
@@ -58,52 +58,51 @@ def addText(string='', loc=((0, 0, 0)), textsize=1, align='CENTER', offset_y=0, 
     return text
 
 
-# #------------------------------------------------------------
 # Dimension: Linear-1
-def Linear1(width = 2, length = 2, dsize = 1, depth = 0.1, center = False, arrow = 'Arrow1', arrowdepth = 0.1, arrowlength = 0.25):
-    
+def Linear1(width=2, length=2, dsize=1, depth=0.1, center=False, arrow='Arrow1', arrowdepth=0.1, arrowlength=0.25):
+
     newpoints = []
-    
+
     w = 1
     if width < 0:
         w = -1
     l = 1
     if length < 0:
         l = -1
-    
+
     if center:
-       center1 = w * depth / 2
-       center2 = w * depth / 2
+        center1 = w * depth / 2
+        center2 = w * depth / 2
     else:
-       center1 = 0
-       center2 = w * depth
-    
+        center1 = 0
+        center2 = w * depth
+
     if arrow == 'Arrow1':
         new_coords = [
-            [-center1, 0, 0], #1
-            [-center1, length, 0], #2
-            [-center1, length + l * dsize, 0], #3
-            [center2, length + l * dsize, 0], #4
-            [center2, length + l * dsize / 2 + l * depth / 100, 0], #5
-            [center2 + w * arrowlength, length + l * dsize / 2 + l * arrowdepth + l * depth / 2, 0], #6
-            [center2 + w * arrowlength, length + l * dsize / 2 + l * depth / 2, 0], #7
-            [width-center2-w * arrowlength, length + l * dsize / 2 + l * depth / 2, 0], #8
-            [width-center2-w * arrowlength, length + l * dsize / 2 + l * arrowdepth + l * depth / 2, 0], #9
-            [width-center2, length + l * dsize / 2 + l * depth / 100, 0], #10
-            [width-center2, length + l * dsize, 0], #11
-            [width + center1, length + l * dsize, 0], #12
-            [width + center1, length, 0], #13
-            [width + center1, 0, 0], #14
-            [width-center2, 0, 0], #15
-            [width-center2, length, 0], #16
-            [width-center2, length + l * dsize / 2-l * depth / 100, 0], #17
-            [width-center2-w * arrowlength, length + l * dsize / 2-l * arrowdepth-l * depth / 2, 0], #18
-            [width-center2-w * arrowlength, length + l * dsize / 2-l * depth / 2, 0], #19
-            [center2 + w * arrowlength, length + l * dsize / 2-l * depth / 2, 0], #20
-            [center2 + w * arrowlength, length + l * dsize / 2-l * arrowdepth-l * depth / 2, 0], #21
-            [center2, length + l * dsize / 2-l * depth / 100, 0], #22
-            [center2, length, 0], #23
-            [center2, 0, 0], #24
+            [-center1, 0, 0], # 1
+            [-center1, length, 0], # 2
+            [-center1, length + l * dsize, 0], # 3
+            [center2, length + l * dsize, 0], # 4
+            [center2, length + l * dsize / 2 + l * depth / 100, 0], # 5
+            [center2 + w * arrowlength, length + l * dsize / 2 + l * arrowdepth + l * depth / 2, 0], # 6
+            [center2 + w * arrowlength, length + l * dsize / 2 + l * depth / 2, 0], # 7
+            [width-center2-w * arrowlength, length + l * dsize / 2 + l * depth / 2, 0], # 8
+            [width-center2-w * arrowlength, length + l * dsize / 2 + l * arrowdepth + l * depth / 2, 0], # 9
+            [width-center2, length + l * dsize / 2 + l * depth / 100, 0], # 10
+            [width-center2, length + l * dsize, 0], # 11
+            [width + center1, length + l * dsize, 0], # 12
+            [width + center1, length, 0], # 13
+            [width + center1, 0, 0], # 14
+            [width-center2, 0, 0], # 15
+            [width-center2, length, 0], # 16
+            [width-center2, length + l * dsize / 2-l * depth / 100, 0], # 17
+            [width-center2-w * arrowlength, length + l * dsize / 2-l * arrowdepth-l * depth / 2, 0], # 18
+            [width-center2-w * arrowlength, length + l * dsize / 2-l * depth / 2, 0], # 19
+            [center2 + w * arrowlength, length + l * dsize / 2-l * depth / 2, 0], # 20
+            [center2 + w * arrowlength, length + l * dsize / 2-l * arrowdepth-l * depth / 2, 0], # 21
+            [center2, length + l * dsize / 2-l * depth / 100, 0], # 22
+            [center2, length, 0], # 23
+            [center2, 0, 0], # 24
         ]; newpoints.extend(new_coords)
 
     elif arrow == 'Arrow2':
