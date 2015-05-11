@@ -37,9 +37,6 @@ from .operator_dimensions import Dimension
 from .object_properties import DimensionVariables
 from .ui_panel_dimension_add import DimensionAdd
 from .ui_panel_dimension import DimensionPanel
-from .utils_linear import Linear1, Linear2, Linear3
-from .utils_non_linear import Radius, Diameter, Angular1, Angular2, Angular3
-from .utils_note import Note
 
 
 def Dimension_button(self, context):

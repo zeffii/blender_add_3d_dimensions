@@ -1,4 +1,7 @@
 import bpy
+from .utils_linear import Linear1, Linear2, Linear3
+from .utils_non_linear import Radius, Diameter, Angular1, Angular2, Angular3
+from .utils_note import Note
 
 
 # Add a TextCurve
@@ -56,3 +59,115 @@ def addUnits(stext, units):
     else:
         dval = stext
     return dval
+
+
+def getVerts(self, Type):
+
+    if Type == 'Linear-1':
+        verts = Linear1(
+            self.Dimension_width, 
+            self.Dimension_length, 
+            self.Dimension_dsize, 
+            self.Dimension_depth, 
+            self.Dimension_depth_from_center, 
+            self.Dimension_arrow, 
+            self.Dimension_arrowdepth, 
+            self.Dimension_arrowlength)
+
+    if Type == 'Linear-2':
+        verts = Linear2(
+            self.Dimension_width, 
+            self.Dimension_dsize, 
+            self.Dimension_depth, 
+            self.Dimension_depth_from_center, 
+            self.Dimension_arrow, 
+            self.Dimension_arrowdepth, 
+            self.Dimension_arrowlength)
+
+    if Type == 'Linear-3':
+        verts = Linear3(
+            self.Dimension_width, 
+            self.Dimension_length, 
+            self.Dimension_dsize, 
+            self.Dimension_depth, 
+            self.Dimension_depth_from_center, 
+            self.Dimension_arrow, 
+            self.Dimension_arrowdepth, 
+            self.Dimension_arrowlength)
+
+    if Type == 'Radius':
+        verts = Radius(self.Dimension_width, 
+            self.Dimension_length, 
+            self.Dimension_dsize, 
+            self.Dimension_depth, 
+            self.Dimension_depth_from_center, 
+            self.Dimension_arrow, 
+            self.Dimension_arrowdepth, 
+            self.Dimension_arrowlength)
+
+    if Type == 'Diameter':
+        verts = Diameter(
+            self.Dimension_width, 
+            self.Dimension_length, 
+            self.Dimension_dsize, 
+            self.Dimension_depth, 
+            self.Dimension_depth_from_center, 
+            self.Dimension_arrow, 
+            self.Dimension_arrowdepth, 
+            self.Dimension_arrowlength)                           
+    
+    if Type == 'Angular1':
+        if self.Dimension_angle == 0:
+            return {'FINISHED'}
+        
+        verts = Angular1(
+            self.Dimension_width, 
+            self.Dimension_length, 
+            self.Dimension_depth, 
+            self.Dimension_angle, 
+            self.Dimension_resolution, 
+            self.Dimension_depth_from_center, 
+            self.Dimension_arrow, 
+            self.Dimension_arrowdepth, 
+            self.Dimension_arrowlength)
+
+    if Type == 'Angular2':
+        if self.Dimension_angle == 0:
+            return {'FINISHED'}
+
+        verts = Angular2(
+            self.Dimension_width, 
+            self.Dimension_depth, 
+            self.Dimension_angle, 
+            self.Dimension_resolution, 
+            self.Dimension_arrow, 
+            self.Dimension_arrowdepth, 
+            self.Dimension_arrowlength)
+
+    if Type == 'Angular3':
+        if self.Dimension_angle == 0:
+            return {'FINISHED'}
+
+        verts = Angular3(
+            self.Dimension_width, 
+            self.Dimension_length, 
+            self.Dimension_dsize, 
+            self.Dimension_depth, 
+            self.Dimension_angle, 
+            self.Dimension_resolution, 
+            self.Dimension_depth_from_center, 
+            self.Dimension_arrow, 
+            self.Dimension_arrowdepth, 
+            self.Dimension_arrowlength)
+    
+    if Type == 'Note':
+        verts = Note(
+            self.Dimension_width, 
+            self.Dimension_length, 
+            self.Dimension_depth, 
+            self.Dimension_angle, 
+            self.Dimension_arrow, 
+            self.Dimension_arrowdepth, 
+            self.Dimension_arrowlength)
+
+    return verts

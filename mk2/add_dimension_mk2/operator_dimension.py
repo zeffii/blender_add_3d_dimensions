@@ -10,6 +10,8 @@ from bpy.props import (
 import mathutils
 from mathutils import *
 
+from add_dimension import main
+
 
 class Dimension(bpy.types.Operator):
 
