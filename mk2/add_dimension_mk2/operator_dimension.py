@@ -10,6 +10,7 @@ from bpy.props import (
 import mathutils
 from mathutils import *
 
+from .utils import align_matrix
 from .add_dimension import main
 
 
@@ -598,7 +599,7 @@ class Dimension(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
-        return not context.scene
+        return context.scene is not None
 
     def execute(self, context):
 

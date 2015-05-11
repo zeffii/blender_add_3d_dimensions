@@ -30,11 +30,10 @@ bl_info = {
 
 
 import bpy
-
 from bpy.app.handlers import persistent
 
-from .operator_dimension import Dimension
 from .object_properties import DimensionVariables
+from .operator_dimension import Dimension
 from .ui_panel_dimension_add import DimensionAdd
 from .ui_panel_dimension import DimensionPanel
 
@@ -48,17 +47,21 @@ def Dimension_button(self, context):
     oper.Dimension_width_or_location = 'width'
     oper.Dimension_liberty = '2D'
 
+modules_to_register = [Dimension, DimensionAdd, DimensionPanel]
+
 
 def register():
     DimensionVariables()
-    bpy.utils.register_module(__name__)
+    # bpy.utils.register_module(__name__)
+    for m in modules_to_register:
+        bpy.utils.register_class(m)
+
     bpy.types.INFO_MT_curve_add.append(Dimension_button)
 
 
 def unregister():
-    bpy.utils.unregister_module(__name__)
+    # bpy.utils.unregister_module(__name__)
     bpy.types.INFO_MT_curve_add.remove(Dimension_button)
 
-
-if __name__ == "__main__":
-    register()
+    for m in reverse(modules_to_register):
+        bpy.utils.unregister_class(m)

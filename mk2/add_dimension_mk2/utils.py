@@ -1,3 +1,6 @@
+import mathutils
+from mathutils import Matrix, Vector
+
 import bpy
 from .utils_linear import Linear1, Linear2, Linear3
 from .utils_non_linear import Radius, Diameter, Angular1, Angular2, Angular3
@@ -171,3 +174,19 @@ def getVerts(self, Type):
             self.Dimension_arrowlength)
 
     return verts
+
+
+def align_matrix(context, location):
+    '''
+    calculates the matrix for the new object
+    depending on user pref
+    '''
+
+    loc = Matrix.Translation(location)
+    obj_align = context.user_preferences.edit.object_align
+    if ((context.space_data.type == 'VIEW_3D') and (obj_align == 'VIEW')):
+        rot = context.space_data.region_3d.view_matrix.to_3x3().inverted().to_4x4()
+    else:
+        rot = Matrix()
+    align_matrix = loc * rot
+    return align_matrix

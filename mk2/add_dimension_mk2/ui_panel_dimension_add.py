@@ -26,8 +26,8 @@ class DimensionAdd(bpy.types.Panel):
                         if j.select_control_point:
                             selected += 1
 
-        if selected == 1 or selected == 2 or selected == 3:
-            return context.selected_objects
+        if selected in {1, 2, 3}:
+            return True
 
     def draw(self, context):
         vertex = []
