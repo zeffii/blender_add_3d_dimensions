@@ -1,6 +1,10 @@
-import bpy
-from .utils import addText, addUnits
 from math import *
+
+import bpy
+import mathutils
+from mathutils import Matrix, Vector
+
+from .utils import addText, addUnits, getVerts
 
 
 def makeMaterial(name, diffuse, specular, alpha):
@@ -25,22 +29,6 @@ def setMaterial(ob, mat):
 
 def ablength(x1=0.0, y1=0.0, z1=0.0, x2=0.0, y2=0.0, z2=0.0):
     return sqrt((x2 - x1)**2 + (y2 - y1)**2 + (z2 - z1)**2)
-
-
-def align_matrix(context, location):
-    '''
-    calculates the matrix for the new object
-    depending on user pref
-    '''
-
-    loc = Matrix.Translation(location)
-    obj_align = context.user_preferences.edit.object_align
-    if ((context.space_data.type == 'VIEW_3D') and (obj_align == 'VIEW')):
-        rot = context.space_data.region_3d.view_matrix.to_3x3().inverted().to_4x4()
-    else:
-        rot = Matrix()
-    align_matrix = loc * rot
-    return align_matrix
 
 
 def setBezierHandles(obj, mode='VECTOR'):
@@ -490,8 +478,3 @@ def DimensionDelete(self, context):
 
     bpy.ops.object.select_grouped(extend=True, type='CHILDREN_RECURSIVE')
     bpy.ops.object.delete()
-
-
-def StartLocationUpdate(self, context):
-    ''' location update '''
-    bpy.context.scene.cursor_location = self.Dimension_startlocation
